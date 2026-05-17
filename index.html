@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Advanced Responsive Gallery</title>
+
+    <!-- Tailwind Output CSS -->
+    <link rel="stylesheet" href="output.css" />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      /* Fade Animation */
+      .gallery-item {
+        animation: fadeIn 0.7s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Loading Spinner */
+      .loader {
+        border-top-color: transparent;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 min-h-screen">
+    <!-- Loading Screen -->
+    <div
+      id="loading-screen"
+      class="fixed inset-0 bg-white flex items-center justify-center z-50"
+    >
+      <div class="loader w-16 h-16 border-4 border-black rounded-full"></div>
+    </div>
+
+    <!-- Header -->
+    <section class="py-10 text-center px-4">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-800">
+        Advanced Image Gallery
+      </h1>
+
+      <p class="text-gray-500 mt-3 text-lg">
+        Responsive gallery with filters, counters, animations & lightbox
+      </p>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="flex flex-wrap justify-center gap-4 px-4 mb-10">
+      <button
+        class="filter-btn bg-black text-white px-5 py-2 rounded-lg hover:scale-105 transition duration-300"
+        data-filter="all"
+      >
+        All (<span id="all-count">0</span>)
+      </button>
+
+      <button
+        class="filter-btn bg-green-600 text-white px-5 py-2 rounded-lg hover:scale-105 transition duration-300"
+        data-filter="Nature"
+      >
+        Nature (<span id="nature-count">0</span>)
+      </button>
+
+      <button
+        class="filter-btn bg-blue-600 text-white px-5 py-2 rounded-lg hover:scale-105 transition duration-300"
+        data-filter="People"
+      >
+        People (<span id="people-count">0</span>)
+      </button>
+
+      <button
+        class="filter-btn bg-purple-600 text-white px-5 py-2 rounded-lg hover:scale-105 transition duration-300"
+        data-filter="Abstract"
+      >
+        Abstract (<span id="abstract-count">0</span>)
+      </button>
+    </section>
+
+    <!-- Gallery -->
+    <section
+      id="gallery"
+      class="max-w-7xl mx-auto px-4 pb-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+    >
+      <!-- Nature -->
+      <div
+        class="gallery-item bg-white rounded-2xl overflow-hidden shadow-lg cursor-pointer"
+        data-category="Nature"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+          alt="Nature"
+          class="gallery-image w-full h-72 object-cover hover:scale-110 transition duration-500"
+        />
+
+        <div class="p-4">
+          <h2 class="text-xl font-semibold">Nature</h2>
+        </div>
+      </div>
+
+      <!-- People -->
+      <div
+        class="gallery-item bg-white rounded-2xl overflow-hidden shadow-lg cursor-pointer"
+        data-category="People"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80"
+          alt="People"
+          class="gallery-image w-full h-72 object-cover hover:scale-110 transition duration-500"
+        />
+
+        <div class="p-4">
+          <h2 class="text-xl font-semibold">People</h2>
+        </div>
+      </div>
+
+      <!-- Abstract -->
+      <div
+        class="gallery-item bg-white rounded-2xl overflow-hidden shadow-lg cursor-pointer"
+        data-category="Abstract"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=800&q=80"
+          alt="Abstract"
+          class="gallery-image w-full h-72 object-cover hover:scale-110 transition duration-500"
+        />
+
+        <div class="p-4">
+          <h2 class="text-xl font-semibold">Abstract</h2>
+        </div>
+      </div>
+
+      <!-- Nature -->
+      <div
+        class="gallery-item bg-white rounded-2xl overflow-hidden shadow-lg cursor-pointer"
+        data-category="Nature"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
+          alt="Nature"
+          class="gallery-image w-full h-72 object-cover hover:scale-110 transition duration-500"
+        />
+
+        <div class="p-4">
+          <h2 class="text-xl font-semibold">Nature</h2>
+        </div>
+      </div>
+
+      <!-- People -->
+      <div
+        class="gallery-item bg-white rounded-2xl overflow-hidden shadow-lg cursor-pointer"
+        data-category="People"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80"
+          alt="People"
+          class="gallery-image w-full h-72 object-cover hover:scale-110 transition duration-500"
+        />
+
+        <div class="p-4">
+          <h2 class="text-xl font-semibold">People</h2>
+        </div>
+      </div>
+
+      <!-- Abstract -->
+      <div
+        class="gallery-item bg-white rounded-2xl overflow-hidden shadow-lg cursor-pointer"
+        data-category="Abstract"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80"
+          alt="Abstract"
+          class="gallery-image w-full h-72 object-cover hover:scale-110 transition duration-500"
+        />
+
+        <div class="p-4">
+          <h2 class="text-xl font-semibold">Abstract</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div
+      id="lightbox"
+      class="fixed inset-0 bg-black/90 hidden items-center justify-center z-50 p-4"
+    >
+      <!-- Close Button -->
+      <button
+        id="close-lightbox"
+        class="absolute top-5 right-5 text-white text-5xl hover:scale-110 transition"
+      >
+        &times;
+      </button>
+
+      <!-- Lightbox Image -->
+      <img
+        id="lightbox-image"
+        src=""
+        alt=""
+        class="max-w-[90vw] max-h-[90vh] rounded-2xl shadow-2xl"
+      />
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
